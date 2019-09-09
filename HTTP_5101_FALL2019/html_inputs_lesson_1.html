@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML INPUTS</title>
+    <link rel="stylesheet" type="text/css" href="Content/Site.css" />
+
+    
+</head>
+<body>
+        <!--
+            HTML Input Best Practice
+            
+            Quantitative
+            - When using <input> tag, use a type attribute (e.g. type="text", type="radio", type="checkbox", type="file")
+            - Alternative inputs are <select>, <textarea> 
+            - Use an id attribute with every input
+            - id attributes must be unique
+            - Use a name attribute with every input
+            - When using a group of radio buttons (i.e. favorite color) the name attribute must match
+            - Radio, Checkbox, and Options must have value attributes
+            - Use <input> with attribute type="submit" as the last element
+
+            Qualitative
+            - Be consistent with your formatting and naming convention
+            - Describe what you are asking of the user
+            - id attributes should include information of (what you are asking) and (context / who you are asking)
+                - Examples 
+                    (what you are asking) birthyear + (who you are asking) client => id="client_birthyear"
+                    (what you are asking) color + (context) car rental => id="carrental_color"
+                    (what you are asking) quantity + (context) ordering paperclips => id="paperclip_quantity"
+            - name attributes almost always match the id, except for radio buttons
+            - Use semantic formatting (<label>, <section>, <h1>, <h2>, <h3>.. to organize the page)
+
+        -->
+        <section>
+            <h2>Tell me about yourself!</h2>
+            <label>Tell me your first name:</label>
+            <input type="text" id="bachelor_firstname" name="bachelor_firstname" />
+        </section>
+        <section>
+            <h3>That's really interesting. I'd like to know more.</h3>
+            <label>What is your favorite color?</label>
+            <div>
+                <input type="radio" id="color_option_1" name="bachelor_favoritecolor" value="red" /><label for="color_option_1">RED</label>
+            </div>
+            <div>
+                <input type="radio" id="color_option_2" name="bachelor_favoritecolor" value="blue" /><label for="color_option_2">BLUE</label>
+            </div>
+            <div>
+                <input type="radio" id="color_option_3" name="bachelor_favoritecolor" value="yellow" /><label for="color_option_3">YELLOW</label>
+            </div>
+        </section>
+        <section>
+            <h3>What is your favorite animal?</h3>
+            <select id="bachelor_favorite_animal" name="bachelor_favorite_animal">
+                <option value="cat">Cat</option>
+                <option value="dog">Dog</option>
+                <option value="hampster">Hampster</option>
+            </select>
+        </section>
+        <section>
+            <h3>Where would you like to travel?</h3>
+            <div><input type="checkbox" value="california" id="bachelor_wishdestination_1" name="bachelor_wishdestination_1"/><label for="bachelor_wishdestination_1">California</label></div>
+            <div><input type="checkbox" value="northpole" id="bachelor_wishdestination_2" name="bachelor_wishdesination_2"/><label for="bachelor_wishdestination_2">North Pole</label></div>
+            <div><input type="checkbox" value="paris"  id="bachelor_wishdestination_3" name="bachelor_wishdestination_3"/><label for="bachelor_wishdestination_3">Paris</label></div>
+        </section>
+        <section>
+            <input type="submit" value="submit" />
+        </section>
+</body>
+</html>
