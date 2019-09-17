@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Content/Site.css" />
+</head>
+<body>
+    <form method="POST" action="http://sandbox.bittsdevelopment.com/humber/httpdebug/acceptdata.php" onsubmit="return costumeparty_validate();">
+        <section>
+            <h1>Halloween Costume Party RSVP!</h1>
+            <p>The party takes place on October 25th</p>
+        </section>
+        <section>
+            <h2>Please Enter Your First Name</h2>
+            <input type="text" id="guest_fname" name="guest_fname" />
+        </section>
+        <section>
+            <h2>Please Enter Your Last Name</h2>
+            <input type="text" id="guest_lname" name="guest_lname" />
+        </section>
+        <section>
+            <h2>What kind of costume will you wear?</h2>
+            <select name="guest_costumetype" id="guest_costumetype">
+                <option value="">-- Choose One --</option>
+                <option value="scary">Scary</option>
+                <option value="cute">Cute</option>
+                <option value="funny">Funny</option>
+            </select>
+        </section>
+        <section>
+            <h2>How many friends will you bring? (maximum 2)</h2>
+            <input type="text" id="guest_friendcount" name="guest_friendcount" />
+        </section>
+        <section>
+            <h2>Enter Your Phone Number i.e. (999) 212 8350:</h2>
+            <input type="text" id="guest_phone" name="guest_phone" />
+        </section>
+        <section id="errorbox">
+
+        </section>
+        <section>
+            <input type="submit" value="submit" />
+        </section>
+    </form>
+
+
+    <script>
+        /*
+         Client side validation is a way to check that inputs are valid BEFORE
+         we send them to the server.
+
+         This is a standard algorithm for client side validation.
+
+        If client side validation fails, the page WILL NOT SUBMIT!
+         */
+
+        function costumeparty_validate() {
+            //start assuming everything is ok
+            var valid = 1;
+            //error is just an empty string
+            var error = "";
+
+            //Use JavaScript to identify the input elements
+            var guest_fname = document.getElementById('guest_fname');
+            var guest_lname = document.getElementById('guest_lname');
+            var guest_costumetype = document.getElementById('guest_costumetype');
+            var guest_friendcount = document.getElementById('guest_friendcount');
+            var guest_phone = document.getElementById('guest_phone');
+
+            //check the inputs one by one to see if their values are ok
+            if (guest_fname.value == "") {
+                valid = 0;
+                error += "Please enter your first name.<br>";
+            }
+            if (guest_lname.value == "") {
+                valid = 0;
+                error += "Please enter your last name.<br>";
+            }
+            if (guest_costumetype.value == "") {
+                valid = 0;
+                error += "Please select a costume type (going as yourself is not an option!).<br>";
+            }
+            //This one is trickier.
+            //making sure the guest friendcount is a number and that the number is between 0 and 2.
+            //the value is invalid if it is not a number or it is not between 0 and 2.
+            if (parseInt(guest_friendcount.value) != guest_friendcount.value || guest_friendcount.value>2 || guest_friendcount.value<0) {
+                valid = 0;
+                error += "Please enter a friend number between 0 and 2.<br>";
+            }
+
+            //regular expressions (regex) determine if a sequence of characters matches a pattern or not.
+            //the pattern described here is that of a phone number.
+            //Describing regex accurately is outside the bounds of this lesson.
+            //you can learn about it here (https://codeburst.io/javascript-learn-regular-expressions-for-beginners-bb6107015d91)
+            //The pattern you see on line 100 was made with this tool(https://regex101.com/)
+            //This pattern will validate phone numbers in this format
+            // (123) 234 3456
+            // 123 234 3456
+            // (123)-234-3456
+            // 123-234-3456
+            var phoneregex = new RegExp(/^[(]{0,1}[0-9]{3}[)]{0,1}(\s*|\-+)[0-9]{3}(\s*|\-+)[0-9]{4}$/g);
+            if (!(guest_phone.value).match(phoneregex)) {
+                valid = 0;
+                error+="Please enter a proper phone number.<br>"
+            }
+
+            if (!valid) {
+                document.getElementById('errorbox').innerHTML = error;
+                return false;
+            }
+
+            return true;
+
+        }
+
+    </script>
+</body>
+</html>

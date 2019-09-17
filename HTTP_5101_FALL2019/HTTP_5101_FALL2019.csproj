@@ -105,6 +105,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="aspx_validation.aspx" />
+    <Content Include="codebehind_lesson_1.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -113,6 +115,7 @@
     <Content Include="Content\images\webformshtml.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="html_js_validation.html" />
     <Content Include="webform_lesson_1.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -163,6 +166,20 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="aspx_validation.aspx.cs">
+      <DependentUpon>aspx_validation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx_validation.aspx.designer.cs">
+      <DependentUpon>aspx_validation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="codebehind_lesson_1.aspx.cs">
+      <DependentUpon>codebehind_lesson_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="codebehind_lesson_1.aspx.designer.cs">
+      <DependentUpon>codebehind_lesson_1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webform_lesson_1.aspx.cs">
       <DependentUpon>webform_lesson_1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
