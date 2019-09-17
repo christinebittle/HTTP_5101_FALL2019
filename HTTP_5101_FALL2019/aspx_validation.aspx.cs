@@ -49,11 +49,30 @@ namespace HTTP_5101_FALL2019
                     confirmbox.InnerHtml += " Last Name: " + Guest_Lname + "<br>";
                     confirmbox.InnerHtml += " Costume Type: " + Guest_Costumetype + "<br>";
 
+                   
+
                     //todo; write an if statement that checks if the guest count is 0
                     //if 0, write "You'll make friends at the party"
                     //if 1, write "Glad you found a friend!"
                     //if 2, write "three's a crowd, isn't it?"
                     confirmbox.InnerHtml += " You are bringing " + Guest_Friendcount.ToString() + " friend(s) " + "<br>";
+                    if (Guest_Friendcount == 0)
+                    {
+                        confirmbox.InnerHtml += "You'll make friends at the party";
+                    }
+
+                    if (Guest_Friendcount == 1)
+                    {
+                        confirmbox.InnerHtml += "Glad you found a friend!";
+                    }
+
+                    if (Guest_Friendcount == 2)
+                    {
+                        confirmbox.InnerHtml += "Three's a crowd, isn't it?";
+                    }
+
+
+
                     confirmbox.InnerHtml += " We can reach you at: " + Guest_Phone;
 
                 }
